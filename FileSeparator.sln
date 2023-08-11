@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnelFileSeparator", "SnelFileSeparator\SnelFileSeparator.csproj", "{699D414D-6891-4609-951A-A58FB7F72A73}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{699D414D-6891-4609-951A-A58FB7F72A73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{699D414D-6891-4609-951A-A58FB7F72A73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{699D414D-6891-4609-951A-A58FB7F72A73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{699D414D-6891-4609-951A-A58FB7F72A73}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {72B85374-3B54-4A9F-BB6C-7572B16F910F}
+	EndGlobalSection
+EndGlobal
