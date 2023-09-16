@@ -1,10 +1,10 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 
 namespace SnelFileSeparator.Models
 {
     public class Record
     {
+
         public string Date { get; set; }
 
         public string Time { get; set; }
@@ -21,6 +21,9 @@ namespace SnelFileSeparator.Models
 
         public double PseudoRange { get; set; }
 
+        public static string Description { get; } = "   Date     Time     Satellite   Vizir      Azim      Noise     Pseudo";
+
+
         public Record(string date, string time, string satellite,
             string satelliteNumber, string viewingAngle, string azimuthAngle, string noiseRatio, string pseudoRange)
         {
@@ -34,12 +37,16 @@ namespace SnelFileSeparator.Models
             PseudoRange = double.Parse(pseudoRange, CultureInfo.InvariantCulture);
         }
 
-        public string ToString()
+        public override string ToString()
         {
-            string formattedTimestamp = $"{Date}||{Time}";
+            string formattedTimestamp = $"{Date}_{Time}";
             string formattedSatellite = $"{Satellite}" + SatelliteNumber.ToString().PadLeft(2, '0');
-            return formattedTimestamp + "  " + formattedSatellite + "  " + ViewingAngle.ToString("F4") + "  "
-                + AzimuthAngle.ToString("F4") + "  " + NoiseRatio.ToString("F2") + "  " + PseudoRange.ToString("F3");
+            return formattedTimestamp + "    " 
+                + formattedSatellite + "    "
+                + ViewingAngle.ToString("F4", CultureInfo.InvariantCulture) + "    "
+                + AzimuthAngle.ToString("F4", CultureInfo.InvariantCulture) + "    " 
+                + NoiseRatio.ToString("F2", CultureInfo.InvariantCulture) + "    " 
+                + PseudoRange.ToString("F3", CultureInfo.InvariantCulture);
         }
     }
 }

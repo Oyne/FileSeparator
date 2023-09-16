@@ -7,73 +7,108 @@
         xmlns:fa="http://schemas.fontawesome.com/icons/svg"
         mc:Ignorable="d"
         Title="Snel File Separator"
-        Height="350"
-        Width="450"
+        SizeToContent="WidthAndHeight"
+        ResizeMode="CanMinimize"
         WindowStartupLocation="CenterScreen"
         Background="#202020">
-    <Grid x:Name="OpenFileWindow">
 
-        <Border Grid.Row="0"
-                Background="#626262"
-                BorderBrush="#929292"
-                BorderThickness="2"
-                CornerRadius="5"
-                Margin="15">
+    <Grid>
+        <Grid x:Name="OpenFileWindow"
+              Height="350"
+              Width="450"
+              Visibility="Collapsed">
 
             <DockPanel x:Name="DropFilePanel"
                        AllowDrop="True"
-                       Drop="DropFilePanel_Drop">
+                       Drop="DropFilePanel_Drop"
+                       Margin="15">
 
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="0.4*"></RowDefinition>
-                        <RowDefinition Height="0.2*"></RowDefinition>
-                        <RowDefinition Height="0.4*"></RowDefinition>
-                    </Grid.RowDefinitions>
+                <Border Grid.Row="0"
+                        Background="#626262"
+                        BorderBrush="#929292"
+                        BorderThickness="2"
+                        CornerRadius="5">
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.25*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.5*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.25*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.4*"></RowDefinition>
+                            <RowDefinition Height="0.2*"></RowDefinition>
+                            <RowDefinition Height="0.4*"></RowDefinition>
+                        </Grid.RowDefinitions>
 
-                    <Button x:Name="OpenFileButton"
-                            Click="OpenFileButton_Click"
-                            Grid.Column="1"
-                            Grid.Row="1"
-                            Style="{StaticResource OpenButton}">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.2*"></ColumnDefinition>
-                                <ColumnDefinition Width="0.8*"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <fa:SvgAwesome Grid.Column="0"
-                                           Icon="Regular_File"
-                                           PrimaryColor="#ffffff"
-                                           Margin="0, 10, 10, 10" />
-                            <TextBlock Grid.Column="1"
-                                       VerticalAlignment="Center"
-                                       TextAlignment="Center"
-                                       Text="Відкрити файл" />
-                        </Grid>
-                    </Button>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.25*"></ColumnDefinition>
+                            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                            <ColumnDefinition Width="0.25*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
 
-                    <TextBlock Grid.Column="1"
-                               Grid.Row="2"
-                               Foreground="#d4d4d4"
-                               FontFamily="segoe ui bold"
-                               FontSize="20"
-                               TextAlignment="Center"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Top"
-                               Margin="5"
-                               Text="Перятгніть файл">
-                    </TextBlock>
-                </Grid>
+                        <Button x:Name="OpenFileButton"
+                                Click="OpenFileButton_Click"
+                                Grid.Column="1"
+                                Grid.Row="1"
+                                Style="{StaticResource OpenButton}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                    <ColumnDefinition Width="0.8*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <fa:SvgAwesome Grid.Column="0"
+                                               Icon="Regular_File"
+                                               PrimaryColor="#ffffff"
+                                               Margin="0, 10, 10, 10" />
+                                <TextBlock Grid.Column="1"
+                                           VerticalAlignment="Center"
+                                           TextAlignment="Center"
+                                           Text="Відкрити файл" />
+                            </Grid>
+                        </Button>
+
+                        <TextBlock Grid.Column="1"
+                                   Grid.Row="2"
+                                   Foreground="#d4d4d4"
+                                   FontFamily="segoe ui bold"
+                                   FontSize="20"
+                                   TextAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Top"
+                                   Margin="5"
+                                   Text="Перятгніть файл">
+                        </TextBlock>
+                    </Grid>
+
+                </Border>
 
             </DockPanel>
 
-        </Border>
+        </Grid>
 
+        <Grid x:Name="FileDisplayWindow"
+              Height="700"
+              Width="800"
+              Visibility="Visible">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.05*"></RowDefinition>
+                <RowDefinition Height="0.85*"></RowDefinition>
+                <RowDefinition Height="0.1*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       x:Name="FileNameTextBlock"
+                       VerticalAlignment="Center"
+                       Style="{StaticResource CustomTextBlockStyle}"
+                       FontSize="24"
+                       Text="Name.txt" />
+
+            <TextBlock Grid.Row="1"
+                       xml:space="preserve"
+                       x:Name="FileTextTextBlock"
+                       Style="{StaticResource CustomTextBlockStyle}"
+                       Background="#3c3c3c"
+                       FontSize="18"
+                       Text="LoremIpsum" />
+        </Grid>
     </Grid>
+    
+        
 </Window>
