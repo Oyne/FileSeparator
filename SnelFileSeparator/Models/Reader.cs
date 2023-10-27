@@ -1,7 +1,7 @@
-﻿using System.IO;
-using System.Text.RegularExpressions;
+﻿using System;
 using System.Collections.Generic;
-using System;
+using System.IO;
+using System.Text.RegularExpressions;
 
 namespace SnelFileSeparator.Models
 {
@@ -14,9 +14,9 @@ namespace SnelFileSeparator.Models
             try
             {
                 // Read the file line by line
-                using (StreamReader reader = new StreamReader(filePath))
+                using (StreamReader? reader = new StreamReader(filePath))
                 {
-                    string line;
+                    string? line;
                     while ((line = reader.ReadLine()) != null)
                     {
                         // Check if the line matches the regex pattern

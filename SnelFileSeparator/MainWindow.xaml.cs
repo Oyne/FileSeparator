@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using SnelFileSeparator.Models;
+using SnelFileSeparator.View;
 using System.Collections.Generic;
 using System.Windows;
 
@@ -10,12 +11,13 @@ namespace SnelFileSeparator
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string filePath;
-        List<Record> records = new List<Record>();
+        private string? filePath;
+        List<Record> records;
 
         public MainWindow()
         {
             InitializeComponent();
+            records = new List<Record>();
             OpenFileWindow.Visibility = Visibility.Visible;
             FileDisplayWindow.Visibility = Visibility.Collapsed;
         }
@@ -43,7 +45,7 @@ namespace SnelFileSeparator
                     if (Reader.ReadFile(file, records))
                     {
                         MessageBox.Show("Файл було відкрито", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                        Writer.WriteFile(file, records);
+                        Writer.WriteFileTxt(file, records);
                     }
                     else MessageBox.Show("Файл не було відкрито", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
@@ -62,10 +64,19 @@ namespace SnelFileSeparator
                     MessageBox.Show("Файл було відкрито", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                     OpenFileWindow.Visibility = Visibility.Collapsed;
                     FileDisplayWindow.Visibility = Visibility.Visible;
-                    Writer.WriteTextBlock(FileTextTextBlock, records);
+                    FileNameTextBlock.Text = filePath;
+
+                    RecordsGrid.ItemsSource = null;
+                    RecordsGrid.ItemsSource = records;
                 }
                 else MessageBox.Show("Файл не було відкрито", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+        }
+
+        private void AzimuthSeparatorOpen(object sender, RoutedEventArgs e)
+        {
+            AzimuthSeparator separator = new AzimuthSeparator(records, filePath);
+            separator.Show();
         }
     }
 }
